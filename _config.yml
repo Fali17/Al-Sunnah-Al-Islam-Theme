@@ -1,0 +1,10 @@
+title: Ahlu-Sunnah Al Islam
+email: falisznalt@gmail.com 
+description: >-
+  Spreading the truth. Authentic Islamic knowledge based on Quran and Sunnah.
+baseurl: ""
+url: "https://fali17.github.io"
+theme: minima
+plugins:
+  - jekyll-feed
+markdown: kramdown
