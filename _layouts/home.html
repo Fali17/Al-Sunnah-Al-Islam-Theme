@@ -1,0 +1,63 @@
+---
+layout: default
+---
+
+<header class="site-header">
+  <div>
+    <h1 class="site-title">{{ site.title }}</h1>
+    <p style="color: #d5f5e3; margin: 10px 0 0 0;">{{ site.description }}</p>
+  </div>
+</header>
+
+<nav class="site-nav">
+  <div class="trigger">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/posts">Posts</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main id="main">
+  {{ content }}
+
+  <ul class="post-list">
+    {%- for post in site.posts -%}
+      <li>
+        <h3>
+          <a class="post-link" href="{{ post.url | relative_url }}">
+            {{ post.title | escape }}
+          </a>
+        </h3>
+        <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
+        <div class="post-excerpt">
+          {{ post.excerpt }}
+        </div>
+        <a href="{{ post.url | relative_url }}" class="read-more-btn">Read more ...</a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</main>
+
+<footer class="site-footer">
+  <div style="max-width: 1150px; margin: 0 auto; padding: 22px 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; text-align: left;">
+    <div>
+      <h4>{{ site.title }}</h4>
+      <p style="font-size: 13px; color: #cfe9d6; line-height: 1.6; margin: 0;">{{ site.description }}</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/posts">Posts</a>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <a href="/privacy">Privacy</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+  <div style="border-top: 1px solid rgba(255,255,255,0.18); padding: 12px 20px; text-align: center; font-size: 12px; color: #b8d8c2;">
+    <p style="margin: 0;">© 2024 <strong>{{ site.title }}</strong>. All rights reserved.</p>
+  </div>
+</footer>
