@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<header class="site-header">
+  <h1 class="site-title">{{ site.title }}</h1>
+</header>
+
+<nav class="site-nav">
+  <div class="trigger">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/posts">Posts</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main id="main">
+  <article class="post">
+    <h1>{{ page.title }}</h1>
+    <p class="post-meta">{{ page.date | date: "%B %d, %Y" }}</p>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    {% if page.previous %}
+      <div style="margin-top: 28px; padding-top: 18px; border-top: 1px solid #d5f5e3; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+        <a href="{{ page.previous.url | relative_url }}" class="read-more-btn">← Previous</a>
+        <a href="{{ page.next.url | relative_url }}" class="read-more-btn">Next →</a>
+      </div>
+    {% endif %}
+  </article>
+</main>
+
+<footer class="site-footer">
+  <div style="text-align: center; padding: 22px 20px;">
+    <p style="margin: 0; color: #b8d8c2; font-size: 12px;">© 2024 <strong>{{ site.title }}</strong>. All rights reserved.</p>
+  </div>
+</footer>
