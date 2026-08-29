@@ -4,6 +4,9 @@ layout: default
 
 <header class="site-header">
   <div>
+    {% if site.logo %}
+      <img src="{{ site.logo | relative_url }}" alt="Logo" class="site-logo">
+    {% endif %}
     <h1 class="site-title">{{ site.title }}</h1>
     <p style="color: #d5f5e3; margin: 10px 0 0 0;">{{ site.description }}</p>
   </div>
