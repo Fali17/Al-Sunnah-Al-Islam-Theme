@@ -10,5 +10,5 @@ plugins:
 markdown: kramdown
 
 # Logo
-logo: assets/images/logo.png
+logo:/assets/images/logo.png
 logo_width: 192px
