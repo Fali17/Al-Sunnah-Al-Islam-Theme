@@ -379,8 +379,7 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
-
-/* Header / logo layout */
+/* Header / logo styles (responsive and centered) */
 .site-header {
   background: linear-gradient(180deg, #1d7a3a 0%, #0f6130 100%);
   color: #fff;
@@ -390,7 +389,7 @@ input:focus-visible {
   box-sizing: border-box;
 }
 
-/* keep header content centered and constrained */
+/* Constrain header content */
 .site-header-inner {
   max-width: 1150px;
   margin: 0 auto;
@@ -400,7 +399,7 @@ input:focus-visible {
   padding: 6px 12px;
 }
 
-/* Logo container/link */
+/* Logo container */
 .brand {
   display: flex;
   align-items: center;
@@ -409,46 +408,44 @@ input:focus-visible {
 }
 
 /* Circular, responsive logo:
-   - min 64px, max 128px; scales with viewport in-between */
-.site-logo {
-  width: clamp(64px, 12vw, 128px);
-  height: clamp(64px, 12vw, 128px);
+   scales between min and max so it never appears massive */
+.site-header .site-logo {
+  width: clamp(64px, 14vw, 128px);   /* change min/max to taste */
+  height: clamp(64px, 14vw, 128px);
   object-fit: cover;
   border-radius: 50%;
-  border: 6px solid rgba(0,0,0,0.6); /* black ring like your screenshot */
+  border: 6px solid rgba(0,0,0,0.6); /* black ring like screenshot */
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   background: #fff;
   display: block;
+  max-width: 128px; /* safety cap */
 }
 
-/* Brand text (title + description) */
+/* Site title & description */
 .site-branding {
   flex: 1 1 auto;
   min-width: 0;
-  text-align: center; /* default center for mobile / stacked layout */
+  text-align: center;
 }
 
-/* Title styling similar to your screenshot */
 .site-title {
   margin: 12px 0 6px;
-  font-family: 'Georgia', serif;
+  font-family: Georgia, serif;
   font-weight: 700;
   font-size: clamp(18px, 3.6vw, 36px);
   color: #ffffff;
   line-height: 1.05;
 }
 
-/* Keep link color same as text */
 .site-title a { color: inherit; text-decoration: none; }
 
-/* Description under title */
 .site-description {
   margin: 0;
-  color: rgba(213,245,227,0.95); /* pale mint as used before */
+  color: rgba(213,245,227,0.95);
   font-size: clamp(12px, 2.4vw, 16px);
 }
 
-/* On wide screens put logo left and text centered vertically to its right */
+/* Wide screens: text left of center (optional) */
 @media (min-width: 900px) {
   .site-header-inner {
     align-items: center;
@@ -459,7 +456,7 @@ input:focus-visible {
   }
 }
 
-/* On narrow screens stack logo above text and center everything */
+/* Narrow screens: stack logo above title and center */
 @media (max-width: 899px) {
   .site-header-inner {
     flex-direction: column;
@@ -467,4 +464,9 @@ input:focus-visible {
   }
   .brand { margin-top: 6px; }
   .site-title { margin-top: 8px; }
+  /* ensure small phones don't show huge logo */
+  .site-header .site-logo {
+    width: clamp(56px, 20vw, 96px);
+    height: clamp(56px, 20vw, 96px);
+  }
 }
