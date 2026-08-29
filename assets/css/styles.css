@@ -379,90 +379,92 @@ input:focus-visible {
   outline-offset: 2px;
 }
 
-/* Basic reset for header area */
+
+/* Header / logo layout */
 .site-header {
-  padding: 18px 20px;
-  background: transparent; /* keep current background, change if you want */
+  background: linear-gradient(180deg, #1d7a3a 0%, #0f6130 100%);
+  color: #fff;
+  padding: 26px 12px 18px;
+  border-radius: 8px;
+  margin: 18px 12px 0;
+  box-sizing: border-box;
 }
 
-/* Constrain content and layout the header */
+/* keep header content centered and constrained */
 .site-header-inner {
   max-width: 1150px;
   margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 0 8px;
+  gap: 20px;
+  padding: 6px 12px;
 }
 
-/* Brand / logo */
+/* Logo container/link */
 .brand {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 0 0 auto;
 }
 
-/* Responsive logo sizing:
-   - min 48px, max 120px, scales with viewport in-between */
+/* Circular, responsive logo:
+   - min 64px, max 128px; scales with viewport in-between */
 .site-logo {
-  width: clamp(48px, 12vw, 120px);
-  height: auto;
+  width: clamp(64px, 12vw, 128px);
+  height: clamp(64px, 12vw, 128px);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 6px solid rgba(0,0,0,0.6); /* black ring like your screenshot */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  background: #fff;
   display: block;
-  object-fit: contain;
 }
 
-/* Site text next to the logo */
+/* Brand text (title + description) */
 .site-branding {
   flex: 1 1 auto;
-  min-width: 0; /* allow truncation inside flexbox */
+  min-width: 0;
+  text-align: center; /* default center for mobile / stacked layout */
 }
 
+/* Title styling similar to your screenshot */
 .site-title {
-  margin: 0;
-  font-size: clamp(18px, 3.5vw, 28px);
-  line-height: 1.1;
+  margin: 12px 0 6px;
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  font-size: clamp(18px, 3.6vw, 36px);
+  color: #ffffff;
+  line-height: 1.05;
 }
 
-.site-title a {
-  color: inherit;
-  text-decoration: none;
-}
+/* Keep link color same as text */
+.site-title a { color: inherit; text-decoration: none; }
 
-/* Description (replaces the inline style you had) */
+/* Description under title */
 .site-description {
-  margin: 6px 0 0;
-  color: #d5f5e3; /* keep the color you used; adjust if needed */
-  font-size: 14px;
-  line-height: 1.3;
+  margin: 0;
+  color: rgba(213,245,227,0.95); /* pale mint as used before */
+  font-size: clamp(12px, 2.4vw, 16px);
 }
 
-/* Navigation small spacing (optional tweak to keep nav under header) */
-.site-nav {
-  margin-top: 8px;
+/* On wide screens put logo left and text centered vertically to its right */
+@media (min-width: 900px) {
+  .site-header-inner {
+    align-items: center;
+    gap: 24px;
+  }
+  .site-branding {
+    text-align: left;
+  }
 }
 
-/* Mobile: stack header elements and center */
-@media (max-width: 600px) {
+/* On narrow screens stack logo above text and center everything */
+@media (max-width: 899px) {
   .site-header-inner {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
+    padding: 12px;
   }
-
-  .site-branding {
-    width: 100%;
-  }
-
-  .site-title {
-    font-size: 18px;
-  }
-
-  .site-description {
-    font-size: 13px;
-  }
-
-  /* Ensure logo isn't overly large on small phones */
-  .site-logo {
-    width: clamp(48px, 18vw, 96px);
-  }
+  .brand { margin-top: 6px; }
+  .site-title { margin-top: 8px; }
 }
