@@ -3,12 +3,16 @@ layout: default
 ---
 
 <header class="site-header">
-  <div>
+  <div class="site-header-inner">
     {% if site.logo %}
-      <img src="{{ site.logo | relative_url }}" alt="Logo" class="site-logo">
+      <a class="brand" href="{{ '/' | relative_url }}">
+        <img src="{{ site.logo | relative_url }}" alt="{{ site.title }} logo" class="site-logo">
+      </a>
     {% endif %}
-    <h1 class="site-title">{{ site.title }}</h1>
-    <p style="color: #d5f5e3; margin: 10px 0 0 0;">{{ site.description }}</p>
+    <div class="site-branding">
+      <h1 class="site-title"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+      <p class="site-description">{{ site.description }}</p>
+    </div>
   </div>
 </header>
 
